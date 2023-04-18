@@ -1,15 +1,15 @@
 function binarySearch(arr, target, start, end) {
-  const middle = Math.floor(end - start)
+  const middle = start + Math.floor((end - start) / 2)
 
-  if (target < arr[middle]) {
-    return binarySearch(arr, target, middle + 1, end)
+  if (arr[middle] === target) return middle
+
+  if (arr[middle] < target) {
+    return binarySearch(arr, target,  middle + 1, end)
   }
 
-  if (target > arr[middle]) {
-    return binarySearch(arr, target, middle - 1, 0)
+  if (arr[middle] > target) {
+    return binarySearch(arr, target, start, middle - 1)
   }
-
-  return middle
 }
 
 const arr = [2,5,8,12,16,23,38,56,72,91]
